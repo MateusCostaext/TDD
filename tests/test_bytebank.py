@@ -1,0 +1,48 @@
+from codigo.bytebank import Funcionario
+
+class TestClass:
+    def test_quando_idade_recebe_13_03_2000_deve_retornar_22(self):
+        entrada = "13/03/2000" #Given-Contexto
+        esperado = 25
+
+        funcionario_teste = Funcionario('teste', entrada, 1200)
+
+        #when-ação
+        resultado = funcionario_teste.idade()
+
+        #verifica se é verdade ou não 
+        assert resultado == esperado # Then-desfecho 
+
+    def test_quando_sobrenome_recebe_Lucas_Carvalho_deve_retornar_Carvalho(self):
+        entrada = ' Lucas Carvalho'
+        esperado = 'Carvalho'
+
+        lucas = Funcionario(entrada, '11/11/2000', 1200)
+
+        #When
+        resultado = lucas.sobrenome()
+
+        assert resultado == esperado
+        
+    def test_qunado_decrescimo_salario_recebe_100000_deve_retornar_90000(self):
+        entrada_salario = 100000
+        entrada_nome = 'Paulo Bragança'
+        esperado = 90000
+
+        funcionario_teste = Funcionario(entrada_nome, '11/11/2000', entrada_salario)
+
+        funcionario_teste.decrescimo_salario()
+        resultado = funcionario_teste.salario
+
+        assert resultado == esperado
+
+    def test_quando_calcular_bonus_recebe_1000_deve_retornar_100(self):
+        entrada = 1000
+        esperado = 100
+
+        lucas = Funcionario('teste', '11/11/2000', entrada)
+
+        #When
+        resultado = lucas.calcular_bonus()
+
+        assert resultado == esperado
