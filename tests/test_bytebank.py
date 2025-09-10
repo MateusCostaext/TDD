@@ -61,3 +61,5 @@ class TestClass:
             resultado = lucas.calcular_bonus()
 
             assert resultado
+    
+   
