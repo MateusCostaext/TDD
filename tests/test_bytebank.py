@@ -1,4 +1,6 @@
 from codigo.bytebank import Funcionario
+import pytest
+from pytest import mark
 
 class TestClass:
     def test_quando_idade_recebe_13_03_2000_deve_retornar_22(self):
@@ -36,6 +38,7 @@ class TestClass:
 
         assert resultado == esperado
 
+    @mark.calcular_bonus
     def test_quando_calcular_bonus_recebe_1000_deve_retornar_100(self):
         entrada = 1000
         esperado = 100
@@ -46,3 +49,15 @@ class TestClass:
         resultado = lucas.calcular_bonus()
 
         assert resultado == esperado
+
+    @mark.calcular_bonus
+    def test_quando_calcular_bonus_recebe_1000000_deve_retornar_exception(self):
+        with pytest.raises(Exception):
+            entrada = 100000
+  
+            lucas = Funcionario('teste', '11/11/2000', entrada)
+
+            #When
+            resultado = lucas.calcular_bonus()
+
+            assert resultado
